@@ -41,14 +41,6 @@ program
 		createTable(data);
 	});
 
-program
-	.command('list')
-	.description('Mostra lista de tarefas.')
-	.action(() => {
-		const data = getTodoList(dbPath);
-		listTodoList(data);
-	})
-
 program.parse(process.argv);
 
 
@@ -74,25 +66,3 @@ function createTable(data) {
 
 	console.log(table.toString());
 }
-
-// program
-//   .command('add-list [todo]')
-//   .description('Creates a new todo list.')
-//   .option('-s, --status [status]', 'Status inicial da tarefa.')
-//   .action(async (todo, options) => {
-//     let answers;
-//     if (!todo) {
-//       answers = await inquirer.prompt([
-//         {
-//           type: 'input',
-//           name: 'todo',
-//           message: 'Qual o seu to-do?',
-//           validate: (value) => (value ? true : 'Não é permitido criar uma tarefa sem título.'),
-//         },
-//       ]);
-//     }
-//     const data = getTodoList(dbPath);
-//     data.push(new Todo(todo || answers.todo, options.status === 'true'));
-//     saveTodoList(dbPath, data);
-//     console.log(`${chalk.green.italic('Tarefa adicionada com sucesso!')}`);
-//   });
